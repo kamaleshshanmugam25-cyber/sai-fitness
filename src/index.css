@@ -1,18 +1,32 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #0284C7;
-  --color-primary-hover: #0369A1;
-  --color-primary-light: #E0F2FE;
-  --color-primary-subtle: rgba(2, 132, 199, 0.08);
-  --color-accent: #0EA5E9;
-  --color-slate-dark: #0F172A;
-  --color-slate-card: #1E293B;
-  --color-charcoal: #0F172A;
-  --color-muted: #64748B;
-  --color-border-grey: #E2E8F0;
-  --color-bg-light: #F8FAFC;
-  --color-card-blue: #F0F7FC;
+  /* =========================================================================
+     SAI FITNESS — EXACT PALETTE TOKENS
+     ========================================================================= */
+
+  /* OFFICIAL SPECIFICATION */
+  --color-premium-yellow: #F4BE38;
+  --color-golden-yellow: #EDDA5E;
+  --color-luxury-ivory: #FFFDF5;
+  --color-pure-white: #FFFFFF;
+  --color-deep-charcoal: #252525;
+  --color-soft-black: #333333;
+  --color-light-cream: #FFF4D6;
+  --color-border-grey: #EAE6DC;
+  --color-muted-grey: #858585;
+
+  /* SYSTEM ALIASES */
+  --color-primary: #F4BE38;
+  --color-primary-hover: #EDDA5E;
+  --color-primary-light: #FFF4D6;
+  --color-accent: #EDDA5E;
+  --color-nav-footer: #333333;
+  --color-charcoal: #252525;
+  --color-muted: #858585;
+  --color-border: #EAE6DC;
+  --color-bg-light: #FFFDF5;
+  --color-card-surface: #FFFFFF;
   --color-white: #FFFFFF;
 
   --font-heading: 'Sora', 'Manrope', system-ui, sans-serif;
@@ -21,13 +35,28 @@
 }
 
 @layer base {
+  :root {
+    --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
+    --bg-page: #FFFDF5;
+    --surface-card: #FFFFFF;
+    --action-primary: #F4BE38;
+    --action-hover: #EDDA5E;
+    --accent-gold: #EDDA5E;
+    --text-primary: #252525;
+    --text-secondary: #858585;
+    --bg-alt: #FFF4D6;
+    --border-subtle: #EAE6DC;
+    --info-bg: #FFF4D6;
+    --nav-footer: #333333;
+  }
+
   * {
-    border-color: #E2E8F0;
+    border-color: #EAE6DC;
   }
 
   body {
-    background-color: #F8FAFC;
-    color: #0F172A;
+    background-color: #FFFDF5;
+    color: #252525;
     font-family: 'Inter', system-ui, sans-serif;
     overflow-x: hidden;
   }
@@ -35,28 +64,139 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Sora', 'Manrope', system-ui, sans-serif;
     letter-spacing: -0.02em;
-    color: #0F172A;
+    color: #252525;
   }
 }
 
-/* Custom premium light blue scrollbars */
+/* Custom premium scrollbars */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #F8FAFC;
+  background: #FFFDF5;
 }
 ::-webkit-scrollbar-thumb {
-  background: #CBD5E1;
+  background: #EAE6DC;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #0284C7;
+  background: #F4BE38;
 }
 
 /* Dot pattern background */
 .bg-dot-pattern {
-  background-image: radial-gradient(#CBD5E1 1px, transparent 1px);
+  background-image: radial-gradient(#EAE6DC 1px, transparent 1px);
   background-size: 24px 24px;
+}
+
+/* =========================================================================
+   ULTRA-PREMIUM ANIMATION & INTERACTION UTILITIES
+   ========================================================================= */
+
+/* Elegant CTA Button Shine Effect */
+.btn-shine:not(.absolute) {
+  position: relative;
+}
+.btn-shine {
+  overflow: hidden;
+}
+.btn-shine::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -120%;
+  width: 60%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.28) 50%,
+    transparent 100%
+  );
+  transform: rotate(25deg);
+  pointer-events: none;
+  transition: none;
+}
+.btn-shine:hover::after {
+  left: 200%;
+  transition: left 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Animated Underline Effect for Nav Links */
+.nav-link-animated {
+  position: relative;
+}
+.nav-link-animated::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #F4BE38;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.nav-link-animated:hover::after,
+.nav-link-animated.active::after {
+  transform: scaleX(1);
+}
+
+/* Footer Animated Underline */
+.footer-link-animated {
+  position: relative;
+  display: inline-block;
+}
+.footer-link-animated::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #F4BE38;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.footer-link-animated:hover::after {
+  transform: scaleX(1);
+}
+
+/* Infinite Brand Carousel Marquee */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 32s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Respect Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-marquee {
+    animation: none !important;
+  }
 }

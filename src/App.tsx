@@ -1,8 +1,10 @@
 import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ToastProvider } from './context/ToastContext';
 import { WishlistProvider } from './context/WishlistContext';
 import { CartProvider } from './context/CartContext';
+import { PREMIUM_EASING } from './utils/motion';
 
 import { AnnouncementBar } from './components/common/AnnouncementBar';
 import { Navbar } from './components/common/Navbar';
@@ -31,10 +33,48 @@ function ScrollToTop() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   }, [pathname]);
 
   return null;
+}
+
+// Page transition router
+function AnimatedRoutes() {
+  const location = useLocation();
+
+  return (
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={location.pathname}
+        initial={{ opacity: 0, y: 8 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -8 }}
+        transition={{ duration: 0.3, ease: PREMIUM_EASING }}
+        className="flex-1 flex flex-col w-full"
+      >
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/shop" element={<ShopPage />} />
+          <Route path="/category/:slug" element={<CategoryPage />} />
+          <Route path="/product/:slug" element={<ProductDetailPage />} />
+          <Route path="/search" element={<SearchResultsPage />} />
+          <Route path="/cart" element={<CartPage />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/order-confirmation/:orderId" element={<OrderConfirmationPage />} />
+          <Route path="/wishlist" element={<WishlistPage />} />
+          <Route path="/brands" element={<BrandsPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+          <Route path="/terms" element={<TermsPage />} />
+          <Route path="/shipping-returns" element={<ShippingReturnsPage />} />
+          {/* Fallback to Home */}
+          <Route path="*" element={<HomePage />} />
+        </Routes>
+      </motion.div>
+    </AnimatePresence>
+  );
 }
 
 export function App() {
@@ -43,7 +83,7 @@ export function App() {
       <ToastProvider>
         <WishlistProvider>
           <CartProvider>
-            <div className="min-h-screen bg-[#F8FAFC] text-[#0F172A] flex flex-col font-sans selection:bg-[#0284C7] selection:text-white">
+            <div className="min-h-screen bg-[#FFFDF5] text-[#252525] flex flex-col font-sans selection:bg-[#F4BE38] selection:text-[#252525]">
               <ScrollToTop />
               
               {/* Top Announcement Bar */}
@@ -58,27 +98,9 @@ export function App() {
               {/* Floating WhatsApp Quick Action Button */}
               <WhatsAppFloating />
 
-              {/* Main Routing Outlet */}
-              <main className="flex-1">
-                <Routes>
-                  <Route path="/" element={<HomePage />} />
-                  <Route path="/shop" element={<ShopPage />} />
-                  <Route path="/category/:slug" element={<CategoryPage />} />
-                  <Route path="/product/:slug" element={<ProductDetailPage />} />
-                  <Route path="/search" element={<SearchResultsPage />} />
-                  <Route path="/cart" element={<CartPage />} />
-                  <Route path="/checkout" element={<CheckoutPage />} />
-                  <Route path="/order-confirmation/:orderId" element={<OrderConfirmationPage />} />
-                  <Route path="/wishlist" element={<WishlistPage />} />
-                  <Route path="/brands" element={<BrandsPage />} />
-                  <Route path="/about" element={<AboutPage />} />
-                  <Route path="/contact" element={<ContactPage />} />
-                  <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
-                  <Route path="/terms" element={<TermsPage />} />
-                  <Route path="/shipping-returns" element={<ShippingReturnsPage />} />
-                  {/* Fallback to Home */}
-                  <Route path="*" element={<HomePage />} />
-                </Routes>
+              {/* Main Routing Outlet with Smooth Page Transitions */}
+              <main className="flex-1 flex flex-col">
+                <AnimatedRoutes />
               </main>
 
               {/* Luxury Footer */}

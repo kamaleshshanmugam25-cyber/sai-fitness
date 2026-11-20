@@ -1,12 +1,22 @@
 export interface BrandConfig {
   name: string;
+  fullName: string;
   slogan: string;
   tagline: string;
   description: string;
+  businessType: string;
+  mainServices: string[];
+  googleRating: number;
+  googleReviews: number;
+  googleReviewsDisplay: string;
   phone: string;
   phoneDisplay: string;
   whatsappNumber: string;
   whatsappDisplay: string;
+  instagramHandle: string;
+  founder: string;
+  motto: string;
+  logoUrl: string;
   email: string;
   address: {
     street: string;
@@ -15,7 +25,18 @@ export interface BrandConfig {
     state: string;
     pincode: string;
     country: string;
+    landmark?: string;
+    googleMapsUrl: string;
   };
+  branches: {
+    id: string;
+    name: string;
+    area: string;
+    address: string;
+    phone: string;
+    hours: string;
+    features: string[];
+  }[];
   businessHours: string;
   announcements: string[];
   features: {
@@ -41,28 +62,66 @@ export interface BrandConfig {
 
 export const BRAND_CONFIG: BrandConfig = {
   name: "SAI FITNESS",
-  slogan: "FUEL YOUR BODY. ELEVATE YOUR PERFORMANCE.",
-  tagline: "YOUR FITNESS. YOUR STRENGTH. YOUR NEXT LEVEL.",
-  description: "Discover trusted sports nutrition products from leading international and Indian brands to support your fitness journey. 100% authentic multi-brand catalogue with verified importer seals.",
-  phone: "+919876543210",
-  phoneDisplay: "+91 98765 43210",
-  whatsappNumber: "919876543210",
-  whatsappDisplay: "+91 98765 43210",
+  fullName: "Sai Fitness – Unisex Fitness Center",
+  slogan: "MASTER THE BLASTER 👑 FEELING ON 🔝",
+  tagline: "MASTER THE BLASTER 👑 FEELING ON 🔝",
+  description: "Tiruchirappalli's leading Unisex Fitness Center, AC Gym & authentic sports nutrition store. Certified gym training, bodybuilding, weight-loss coaching and 100% genuine supplements with 4.9⭐ on Google (1,586+ reviews).",
+  businessType: "Unisex Gym / Fitness Center",
+  mainServices: [
+    "Gym training",
+    "Bodybuilding",
+    "Weight-loss coaching",
+    "Authentic sports nutrition"
+  ],
+  googleRating: 4.9,
+  googleReviews: 1586,
+  googleReviewsDisplay: "1,586",
+  phone: "9894558995",
+  phoneDisplay: "+91 98945 58995",
+  whatsappNumber: "919894558995",
+  whatsappDisplay: "+91 98945 58995",
+  instagramHandle: "@saifitness_trichy_",
+  founder: "M. Saisaran (@m.saisaran)",
+  motto: "WE SHAPE U • YOU 🆚 YOU",
+  logoUrl: "/images/logo.png",
   email: "support@saifitness.in",
   address: {
-    street: "Plot No. 42, 80 Feet Main Road, 4th Block, Koramangala",
-    hub: "SAI FITNESS Nutrition & Wellness Hub",
-    city: "Bengaluru",
-    state: "Karnataka",
-    pincode: "560034",
+    street: "No. 11A, Subramania Swamy Kovil Street, 8, W Blvd Road, near Old Passport Office",
+    hub: "Sai Fitness – Unisex Fitness Center",
+    city: "Trichy",
+    state: "Tamil Nadu",
+    pincode: "620008",
     country: "India",
+    landmark: "Near Old Passport Office, Subramania Swamy Kovil Street",
+    googleMapsUrl: "https://www.google.com/search?q=saifitness+trichy",
   },
-  businessHours: "Mon – Sat: 9:00 AM – 9:00 PM IST | Sun: 10:00 AM – 6:00 PM IST",
+  branches: [
+    {
+      id: "wb-road",
+      name: "Main Branch — W Blvd Road (Tharanallur)",
+      area: "West Boulevard Road / Tharanallur",
+      address: "No. 11A, Subramania Swamy Kovil Street, 8, W Blvd Road, near Old Passport Office, Trichy – 620008",
+      phone: "+91 98945 58995",
+      hours: "Mon – Sat: 5:00 AM – 10:00 PM | Sun: 6:00 AM – 1:00 PM",
+      features: ["Unisex AC Gym", "Bodybuilding Prep", "Weight-Loss Coaching", "Sports Nutrition Store"]
+    },
+    {
+      id: "thiruvanaikoil",
+      name: "Branch 2 — Thiruvanaikoil",
+      area: "Thiruvanaikoil",
+      address: "Srinivasa Nagar, Thiruvanaikoil, Tiruchirappalli, Tamil Nadu - 620005",
+      phone: "+91 80127 72255",
+      hours: "Mon – Sat: 5:30 AM – 9:30 PM | Sun: 6:00 AM – 12:00 PM",
+      features: ["AC Fitness Facility", "Personal Coaching", "Cardio & Strength Equipment", "Diet Consultation"]
+    }
+  ],
+  businessHours: "Mon – Sat: 5:00 AM – 10:00 PM IST | Sun: 6:00 AM – 1:00 PM IST",
   announcements: [
-    "AUTHENTIC PRODUCTS | 100% SOURCED FROM AUTHORIZED IMPORTERS",
-    "FREE INDIA-WIDE DELIVERY ON ALL ORDERS OVER ₹1,999",
-    "ORDER VIA WHATSAPP WITH CERTIFIED NUTRITIONIST GUIDANCE",
-    "USE CODE 'SAIFIT10' TO GET 10% OFF ON ORDERS OVER ₹1,499"
+    "MASTER THE BLASTER 👑 FEELING ON 🔝",
+    "4.9 ⭐ RATED ON GOOGLE (1,586+ REVIEWS) — TRICHY'S PREMIER UNISEX GYM",
+    "GYM TRAINING • BODYBUILDING • WEIGHT-LOSS COACHING • 100% GENUINE SUPPLEMENTS",
+    "FOLLOW US ON INSTAGRAM: @saifitness_trichy_",
+    "FREE INDIA-WIDE DELIVERY ON ALL ORDERS OVER ₹1,999"
   ],
   features: {
     freeShippingThreshold: 1999,
@@ -82,7 +141,7 @@ export const BRAND_CONFIG: BrandConfig = {
     { id: "bsn", name: "BSN Nutrition", origin: "USA", tagline: "Legendary Syntha-6 & N.O.-XPLODE Innovation", logoText: "BSN" }
   ],
   socials: {
-    instagram: "https://instagram.com/saifitness.in",
+    instagram: "https://instagram.com/saifitness_trichy_",
     facebook: "https://facebook.com/saifitness.in",
     youtube: "https://youtube.com/@saifitness"
   }

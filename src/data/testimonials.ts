@@ -15,11 +15,11 @@ export const TESTIMONIALS: Testimonial[] = [
     id: 'test-1',
     author: 'Vikramaditya S.',
     role: 'Competitive Powerlifter',
-    city: 'Bengaluru',
+    city: 'Tiruchirappalli',
     productPurchased: 'Optimum Nutrition Gold Standard 100% Whey',
     rating: 5,
     date: 'February 2026',
-    comment: 'I have been ordering my stack exclusively through SAI FITNESS for over 8 months. Every single ON tub comes with genuine Glanbia importer scratch stickers that verify instantly on the official portal. Delivery in Bengaluru is lightning quick.',
+    comment: 'I have been ordering my stack exclusively through SAI FITNESS for over 8 months. Every single ON tub comes with genuine Glanbia importer scratch stickers that verify instantly on the official portal. Delivery in Trichy is lightning quick.',
     verifiedPurchase: true
   },
   {

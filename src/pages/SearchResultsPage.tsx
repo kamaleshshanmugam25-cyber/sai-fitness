@@ -21,42 +21,42 @@ export const SearchResultsPage: React.FC = () => {
   }, [query]);
 
   return (
-    <div className="py-12 bg-[#F8F6F0] min-h-screen text-left">
+    <div className="py-12 bg-[#FFFDF5] min-h-screen text-left">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         {/* Breadcrumb */}
-        <nav className="flex items-center gap-2 text-xs text-[#85877F]">
-          <Link to="/" className="hover:text-[#263C32]">Home</Link>
-          <ChevronRight className="w-3.5 h-3.5 text-[#E8E4DA]" />
-          <Link to="/shop" className="hover:text-[#263C32]">Shop</Link>
-          <ChevronRight className="w-3.5 h-3.5 text-[#E8E4DA]" />
-          <span className="text-[#263C32] font-semibold">Search Results</span>
+        <nav className="flex items-center gap-2 text-xs text-[#858585]">
+          <Link to="/" className="hover:text-[#F4BE38]">Home</Link>
+          <ChevronRight className="w-3.5 h-3.5 text-[#EAE6DC]" />
+          <Link to="/shop" className="hover:text-[#F4BE38]">Shop</Link>
+          <ChevronRight className="w-3.5 h-3.5 text-[#EAE6DC]" />
+          <span className="text-[#252525] font-semibold">Search Results</span>
         </nav>
 
         {/* Search Query Header */}
-        <div className="space-y-2 border-b border-[#E8E4DA] pb-6">
-          <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#263C32] font-bold">
-            <Search className="w-4 h-4 text-[#D5AD65]" />
+        <div className="space-y-2 border-b border-[#EAE6DC] pb-6">
+          <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#F4BE38] font-bold">
+            <Search className="w-4 h-4 text-[#F4BE38]" />
             <span>STORE DIRECTORY SEARCH</span>
           </div>
-          <h1 className="font-heading font-extrabold text-3xl sm:text-4xl text-[#252821]">
-            Results for <span className="text-[#263C32]">"{query}"</span>
+          <h1 className="font-heading font-extrabold text-3xl sm:text-4xl text-[#252525]">
+            Results for <span className="text-[#F4BE38]">"{query}"</span>
           </h1>
-          <p className="text-xs text-[#85877F]">
+          <p className="text-xs text-[#858585]">
             Found {results.length} authenticated supplement{results.length === 1 ? '' : 's'} matching your criteria.
           </p>
         </div>
 
         {/* Results Grid or Empty State */}
         {results.length === 0 ? (
-          <div className="p-12 rounded-3xl bg-[#FFFFFF] border border-[#E8E4DA] text-center space-y-6 max-w-xl mx-auto shadow-sm">
-            <div className="w-16 h-16 rounded-full bg-[#F8F6F0] flex items-center justify-center text-[#85877F] mx-auto">
+          <div className="p-12 rounded-3xl bg-[#FFFFFF] border border-[#EAE6DC] text-center space-y-6 max-w-xl mx-auto shadow-sm">
+            <div className="w-16 h-16 rounded-full bg-[#FFF4D6] flex items-center justify-center text-[#858585] mx-auto">
               <Search className="w-8 h-8" />
             </div>
             <div className="space-y-1">
-              <h3 className="font-heading font-bold text-xl text-[#252821]">
+              <h3 className="font-heading font-bold text-xl text-[#252525]">
                 No supplements found for "{query}"
               </h3>
-              <p className="text-xs text-[#85877F] leading-relaxed">
+              <p className="text-xs text-[#858585] leading-relaxed">
                 Check your spelling or try popular categories like Whey Protein, Micronized Creatine, or Optimum Nutrition.
               </p>
             </div>
@@ -64,25 +64,25 @@ export const SearchResultsPage: React.FC = () => {
             <div className="pt-2 flex flex-wrap justify-center gap-2">
               <Link
                 to="/search?q=Whey"
-                className="px-3.5 py-2 rounded-xl bg-[#F8F6F0] hover:bg-[#263C32] text-[#252821] hover:text-[#FFFFFF] text-xs font-semibold transition-colors"
+                className="px-3.5 py-2 rounded-xl bg-[#FFF4D6] hover:bg-[#F4BE38] border border-[#EDDA5E] text-[#252525] text-xs font-semibold transition-colors"
               >
                 Whey Protein
               </Link>
               <Link
                 to="/search?q=Creatine"
-                className="px-3.5 py-2 rounded-xl bg-[#F8F6F0] hover:bg-[#263C32] text-[#252821] hover:text-[#FFFFFF] text-xs font-semibold transition-colors"
+                className="px-3.5 py-2 rounded-xl bg-[#FFF4D6] hover:bg-[#F4BE38] border border-[#EDDA5E] text-[#252525] text-xs font-semibold transition-colors"
               >
                 Creatine Monohydrate
               </Link>
               <Link
                 to="/search?q=Pre-Workout"
-                className="px-3.5 py-2 rounded-xl bg-[#F8F6F0] hover:bg-[#263C32] text-[#252821] hover:text-[#FFFFFF] text-xs font-semibold transition-colors"
+                className="px-3.5 py-2 rounded-xl bg-[#FFF4D6] hover:bg-[#F4BE38] border border-[#EDDA5E] text-[#252525] text-xs font-semibold transition-colors"
               >
                 Pre-Workout
               </Link>
               <Link
                 to="/shop"
-                className="px-4 py-2 rounded-xl bg-[#263C32] text-[#FFFFFF] text-xs font-bold transition-colors"
+                className="px-4 py-2 rounded-xl bg-[#F4BE38] hover:bg-[#EDDA5E] text-[#252525] text-xs font-bold transition-colors"
               >
                 Browse All
               </Link>
